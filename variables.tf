@@ -60,6 +60,18 @@ variable "aws_nat_gateway_tags"{
   default = {}
   
 }
+variable "public_route_tables"{
+  default = {}
+  
+}
+variable  "private_route_tables"{
+  default = {}
+  
+}
+variable "database_route_tables"{
+  default = {}
+  
+}
 
   
   

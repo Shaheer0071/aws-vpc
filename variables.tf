@@ -11,10 +11,55 @@ variable "enable_dns_hostnames" {
 variable "vpc_cidr" {
 }
 variable "coommon_tags" {
-  default = {
-    project = "expense"
-    environment = "dev"
-    terraform = "true"
+  type = map
+  # default = {}
+}
+variable "igw_tags" {
+  default = {}
+  
+}
+variable "vpc_tags" {
+  type = map
+  
+}
+variable "public_subnet_cidrs" {
+  type = list
+  validation {
+    condition = length(var.public_subnet_cidrs) == 2
+    error_message = "please provide valid public subnet CIDR"
+  }
+}
+variable "private_subnet_cidrs" {
+  type = list
+  validation {
+    condition = length(var.private_subnet_cidrs) == 2
+    error_message = "please provide valid private subnet CIDR"
+  }
+}
+variable "database_subnet_cidrs" {
+  type = list
+  validation {
+    condition = length(var.database_subnet_cidrs) == 2
+    error_message = "please provide valid database subnet CIDR"
   }
 }
 
+
+
+variable "public_subnet_tags"{
+    default = {}
+}
+variable "private_subnet_tags" {
+  default = {}
+}
+variable "database_subnet_tags"{
+  default = {}
+  
+}
+variable "aws_nat_gateway_tags"{
+  default = {}
+  
+}
+
+  
+  
